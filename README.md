@@ -2,7 +2,7 @@
 
 Otel collector -- 0.45.0
 ```
-sudo docker run -it -v <PATH_TO_CONFIG_FOLDER>:/etc/democonfig -p 4318:4318 otel/opentelemetry-collector:0.45.0 --config=/etc/democonfig/otel-config-test.yaml
+docker run -it -v <PATH_TO_CONFIG_FOLDER>:/etc/democonfig -p 4318:4318 otel/opentelemetry-collector:0.45.0 --config=/etc/democonfig/otel-config-test.yaml
 ```
 
 eBPF Test

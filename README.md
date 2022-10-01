@@ -1,5 +1,13 @@
 # ebpf-test
 
+```
+docker-compose up -d
+```
+
+-----------------------------------
+
+#### Individual commands (Just for reference)
+
 Otel collector -- 0.45.0
 ```
 docker run -it -v <PATH_TO_CONFIG_FOLDER>:/etc/democonfig -p 4318:4318 otel/opentelemetry-collector:0.45.0 --config=/etc/democonfig/otel-config-test.yaml

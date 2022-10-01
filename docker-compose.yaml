@@ -1,0 +1,27 @@
+version: '3.4'
+services:
+  otel-collector:
+    image: otel/opentelemetry-collector:0.45.0
+    command: --config=/etc/democonfig/otel-config-test.yaml
+    volumes:
+      - /home/acq053/work/src/github.com/middleware-labs/ebpf-test/config:/etc/democonfig
+    ports:
+      - 4318:4318
+
+  otel-ebpf:
+    image: ghcr.io/middleware-labs/kernel-collector
+    command: --log-console
+    environment:
+      EBPF_NET_INTAKE_HOST: 127.0.0.1
+      EBPF_NET_INTAKE_PORT: 4318
+      EBPF_NET_INTAKE_ENCODER: otlp_log
+    pid: host
+    network_mode: host
+    privileged: "true"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /sys/fs/cgroup:/hostfs/sys/fs/cgroup 
+      - /etc:/hostfs/etc 
+      - /var/cache:/hostfs/cache 
+      - /usr/src:/hostfs/usr/src   
+      - /lib/modules:/hostfs/lib/modules

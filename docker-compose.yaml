@@ -9,7 +9,7 @@ services:
       - 4318:4318
 
   otel-ebpf:
-    image: ghcr.io/middleware-labs/kernel-collector
+    image: ghcr.io/middleware-labs/kernel-collector:debian-bullseye
     command: --log-console
     environment:
       EBPF_NET_INTAKE_HOST: 127.0.0.1
